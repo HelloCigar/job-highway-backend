@@ -1,0 +1,1 @@
+web: gunicorn job_posting_backend.wsgi --log-file -
