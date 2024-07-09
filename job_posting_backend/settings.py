@@ -47,12 +47,14 @@ INSTALLED_APPS = [
 ]
 
 ALLOWED_HOSTS=['*']
-               
+
+CSRF_TRUSTED_ORIGINS = ['job-highway-backend-production.up.railway.app']        
 
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3001',
+
 )
 
 
