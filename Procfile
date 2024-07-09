@@ -1,1 +1,1 @@
-web: gunicorn job_posting_backend.wsgi --log-file -
+web: python manage.py migrate && python manage.py collectstatic --no-input && gunicorn job_posting_backend.wsgi

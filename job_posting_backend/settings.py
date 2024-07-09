@@ -23,11 +23,12 @@ load_dotenv(env_path)
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-11ro^4rv2#lmjjesj$x93ao7iwyd$yedc_wo5&w7zt+zkz53p$'
+#SECRET_KEY = 'django-insecure-11ro^4rv2#lmjjesj$x93ao7iwyd$yedc_wo5&w7zt+zkz53p$'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-&psk#na5l=p3q8_a+-$4w1f^lt3lx1c@d*p4x$ymm_rn7pwb87')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+#DEBUG = Fals3
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 # Application definition
 
@@ -161,3 +162,11 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 USER_CREATE_PASSWORD_RETYPE = False
+
+import dj_database_url
+
+if 'DATABASE_URL' in os.environ:
+    DATABASES['default'] = dj_database_url.config(
+        conn_max_age=500,
+        conn_health_checks=True,
+    )
