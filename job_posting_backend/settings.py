@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 
 ALLOWED_HOSTS=['*']
 
-CSRF_TRUSTED_ORIGINS = ['job-highway-backend-production.up.railway.app']        
+CSRF_TRUSTED_ORIGINS = ['http://job-highway-backend-production.up.railway.app', 'https://job-highway-backend-production.up.railway.app']        
 
 CORS_ORIGIN_ALLOW_ALL = False
 
