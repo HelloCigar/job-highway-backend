@@ -29,8 +29,10 @@ class BrowseJobsView(APIView):
     def get(self,request, format=None):
         jobs = Job.objects.all()
         query = request.GET.get('query', '')
+        # remove leading and trailing whitespaces
+        query = query.strip()
         if query:
-            jobs = jobs.filter(title__icontains=query)
+            jobs = jobs.filter(title__icontains=query) | jobs.filter(company_name__icontains=query) | jobs.filter(position_location__icontains=query)
         categories = request.GET.get('categories', '')
         if categories:
             jobs = jobs.filter(category_id__in=categories.split(','))

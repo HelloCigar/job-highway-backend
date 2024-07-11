@@ -53,7 +53,9 @@ CSRF_TRUSTED_ORIGINS = ['http://job-highway-backend-production.up.railway.app', 
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
     'http://localhost:3001',
+    'http://localhost:3002',
     'https://playful-klepon-3adb9a.netlify.app',
     'https://668cc47a0f58cd00082d08d5--playful-klepon-3adb9a.netlify.app',
 )
