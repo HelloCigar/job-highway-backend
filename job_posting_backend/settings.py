@@ -108,6 +108,11 @@ REST_FRAMEWORK = {
     ]
 }
 
+
+DJOSER = {
+    "USER_CREATE_PASSWORD_RETYPE": True,
+}
+
 WSGI_APPLICATION = 'job_posting_backend.wsgi.application'
 
 
