@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'job',
 ]
 
-ALLOWED_HOSTS=[]
+ALLOWED_HOSTS=['http://job-highway-backend-production.up.railway.app', 'https://job-highway-backend-production.up.railway.app']
 
 CSRF_TRUSTED_ORIGINS = ['http://job-highway-backend-production.up.railway.app', 'https://job-highway-backend-production.up.railway.app']        
 
