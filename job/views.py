@@ -46,7 +46,6 @@ class MyJobsView(APIView):
     def get(self, request, format=None):
         jobs = Job.objects.filter(created_by=request.user)
         serializer = JobSerializer(jobs, many=True)
-        print(serializer.data)
         return Response(serializer.data)
 
 class CreateJobView(APIView):
@@ -65,10 +64,11 @@ class CreateJobView(APIView):
             return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
         
     def put(self, request, pk):
+        category = Category.objects.get(pk=request.data['category'])
         job = Job.objects.get(pk=pk, created_by=request.user)
-        form = JobForm(request.data, instance=job)
-        if form.is_valid():
-            form.save()
+        job.category = category
+        job.save(update_fields=["category"])
+        if job:
             return Response({'status': 'updated'})
         
     def delete(self, request, pk):
