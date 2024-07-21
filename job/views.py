@@ -67,7 +67,7 @@ class CreateJobView(APIView):
         category = Category.objects.get(pk=request.data['category'])
         job = Job.objects.get(pk=pk, created_by=request.user)
         job.category = category
-        job.save(update_fields=["category"])
+        job.save()
         if job:
             return Response({'status': 'updated'})
         
