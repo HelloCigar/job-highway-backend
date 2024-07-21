@@ -66,10 +66,14 @@ class CreateJobView(APIView):
     def put(self, request, pk):
         category = Category.objects.get(pk=request.data['category'])
         job = Job.objects.get(pk=pk, created_by=request.user)
-        job.category = category
-        job.save()
-        if job:
+        form = JobForm(request.data, instance=job)
+        if form.is_valid():
+            form.save(commit=True)
+            job.category = category
+            job.save(update_fields=["category"])
             return Response({'status': 'updated'})
+        else:
+            return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
         
     def delete(self, request, pk):
         job = Job.objects.get(pk=pk, created_by=request.user)
