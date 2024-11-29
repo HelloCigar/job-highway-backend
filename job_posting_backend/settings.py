@@ -57,6 +57,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:3001',
     'http://localhost:3002',
     'https://jobhighway.netlify.app',
+    'https://job-highway-frontend.onrender.com'
 )
 
 
